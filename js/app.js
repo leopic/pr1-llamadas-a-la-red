@@ -36,11 +36,19 @@ angular.module('proyectoUno', [
     .controller('ProyectoUnoController',
         ['$scope', 'ProyectoUnoService', function ($scope, ProyectoUnoService) {
             $scope.init = function() {
+                // Usando callbacks
                 ProyectoUnoService.obtener(function(respuesta) {
                     $scope.usuarios = respuesta;
                 }, function(razon) {
                     $scope.error = razon;
                 });
+
+                // Usando promises
+                //ProyectoUnoService.obtener().$promise.then(function(respuesta){
+                //    $scope.usuarios = respuesta;
+                //}, function(razon) {
+                //    $scope.error = razon;
+                //});
             };
 
             $scope.init();
